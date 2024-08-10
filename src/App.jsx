@@ -4,7 +4,9 @@ import './App.css'
 function App() {
 
   return (
-    <ContactForm />
+    <main className='bg-Color-Green-Light flex h-screen w-full items-center'>
+      <ContactForm />
+    </main>
   )
 }
 
