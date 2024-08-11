@@ -27,6 +27,7 @@ export const ContactForm = () => {
                             id="firstName"
                             {...register('firstName', { required: 'This field is required' })}
                             className={`border-2 rounded-md py-2 px-6 ${errors.firstName ? 'border-red-600' : ''}`}
+                            aria-invalid={errors.firstName ? "true" : "false"}
                         />
                         {errors.firstName && (
                             <p className='text-xs text-Color-Red'>{errors.firstName.message}</p>
@@ -44,6 +45,7 @@ export const ContactForm = () => {
                         <input type="text" id="lastName"
                             {...register('lastName', { required: 'This field is required' })}
                             className={`border-2 rounded-md py-2 px-6 ${errors.lastName ? 'border-red-600' : ''}`}
+                            aria-invalid={errors.firstName ? "true" : "false"}
                         />
                         {errors.lastName && (
                             <p className='text-xs text-Color-Red'>{errors.lastName.message}</p>
@@ -68,6 +70,7 @@ export const ContactForm = () => {
                             },
                         })}
                         className={`border-2 rounded-md py-2 px-4 ${errors.email ? 'border-Color-Red' : ''}`}
+                        aria-invalid={errors.lastName ? "true" : "false"}
                     />
                     {errors.email && (
                         <p className='text-xs text-Color-Red'>{errors.email.message}</p>
@@ -101,7 +104,7 @@ export const ContactForm = () => {
                             </label>
                         </div>
                     </div>
-                        {errors.queryType && <p className='text-xs text-Color-Red'>{errors.queryType.message}</p>}
+                    {errors.queryType && <p className='text-xs text-Color-Red'>{errors.queryType.message}</p>}
                 </div>
             </div>
 
@@ -118,6 +121,7 @@ export const ContactForm = () => {
                     rows="4"
                     {...register('userMessage', { required: 'This field is required' })}
                     className={`border-2 rounded-md py-2 px-4 ${errors.userMessage ? 'border-red-600' : ''}`}
+                    aria-invalid={errors.userMessage ? "true" : "false"}
                 ></textarea>
                 {errors.userMessage && <p className='text-xs text-Color-Red'>{errors.userMessage.message}</p>}
             </div>
@@ -128,7 +132,7 @@ export const ContactForm = () => {
                     <input
                         type="checkbox"
                         {...register('consent', { required: 'To submit this form, please consent to being contacted' })}
-                        className=""
+                        aria-invalid={errors.consent ? "true" : "false"}
                     />
                     <label
                         className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
