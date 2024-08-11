@@ -10,23 +10,23 @@ export const ContactForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mx-auto bg-Color-White p-8 rounded-md gap-4'>
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mx-auto bg-Color-White p-6 md:p-8 rounded-md gap-4'>
             <h1 className='text-2xl font-semibold'>Contact Us</h1>
             <div className='flex flex-col gap-6'>
 
-                <div className='flex gap-3'>
+                <div className='flex flex-col gap-4 md:flex-row'>
                     {/* First Name */}
                     <div className='flex flex-col gap-2'>
                         <label
                             htmlFor="firstName"
-                            className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>
+                            className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
                             First Name
                             <span className='text-Color-Green-Medium'>*</span>
                         </label>
                         <input type="text"
                             id="firstName"
                             {...register('firstName', { required: 'This field is required' })}
-                            className={`border-2 rounded-md py-2 px-4 ${errors.firstName ? 'border-red-600' : ''}`}
+                            className={`border-2 rounded-md py-2 px-6 ${errors.firstName ? 'border-red-600' : ''}`}
                         />
                         {errors.firstName && (
                             <p className='text-xs text-Color-Red'>{errors.firstName.message}</p>
@@ -37,13 +37,13 @@ export const ContactForm = () => {
                     <div className='flex flex-col gap-2'>
                         <label
                             htmlFor="lastName"
-                            className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>
+                            className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
                             Last Name
                             <span className='text-Color-Green-Medium'>*</span>
                         </label>
                         <input type="text" id="lastName"
                             {...register('lastName', { required: 'This field is required' })}
-                            className={`border-2 rounded-md py-2 px-4 ${errors.lastName ? 'border-red-600' : ''}`}
+                            className={`border-2 rounded-md py-2 px-6 ${errors.lastName ? 'border-red-600' : ''}`}
                         />
                         {errors.lastName && (
                             <p className='text-xs text-Color-Red'>{errors.lastName.message}</p>
@@ -54,8 +54,8 @@ export const ContactForm = () => {
                 {/* Email */}
                 <div className='flex flex-col gap-2'>
                     <label
-                        htmlFor="lastName"
-                        className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>
+                        htmlFor="email"
+                        className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
                         Email Address
                         <span className='text-Color-Green-Medium'>*</span>
                     </label>
@@ -67,7 +67,7 @@ export const ContactForm = () => {
                                 message: 'Please enter a valid email address'
                             },
                         })}
-                        className={`border-2 rounded-md py-2 px-4 ${errors.lastName ? 'border-Color-Red' : ''}`}
+                        className={`border-2 rounded-md py-2 px-4 ${errors.email ? 'border-Color-Red' : ''}`}
                     />
                     {errors.email && (
                         <p className='text-xs text-Color-Red'>{errors.email.message}</p>
@@ -75,9 +75,9 @@ export const ContactForm = () => {
                 </div>
 
                 {/* Query Type */}
-                <div className='flex flex-col gap-3'>
-                    <label className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>Query Type<span className='text-Color-Green-Medium'>*</span></label>
-                    <div className='flex gap-3'>
+                <div className='flex flex-col gap-3 pb-2 md:pb-0'>
+                    <label className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>Query Type<span className='text-Color-Green-Medium'>*</span></label>
+                    <div className='flex flex-col gap-3 md:flex-row'>
                         <div className='flex gap-2 border-2 rounded-md py-2 pl-8 pr-20'>
                             <input
                                 type="radio"
@@ -85,7 +85,7 @@ export const ContactForm = () => {
                                 {...register('queryType', { required: 'Please select a query type' })}
                                 value="General Enquiry"
                             />
-                            <label htmlFor="general-enquiry" className='text-Color-Grey-Dark text-sm'>
+                            <label htmlFor="general-enquiry" className='text-Color-Grey-Dark text-base'>
                                 General Enquiry
                             </label>
                         </div>
@@ -96,7 +96,7 @@ export const ContactForm = () => {
                                 {...register('queryType', { required: 'Please select a query type' })}
                                 value="support-request"
                             />
-                            <label htmlFor="support-request" className='text-Color-Grey-Dark text-sm'>
+                            <label htmlFor="support-request" className='text-Color-Grey-Dark text-base'>
                                 Support Request
                             </label>
                         </div>
@@ -105,21 +105,21 @@ export const ContactForm = () => {
                 </div>
             </div>
 
-            {/* Nessage */}
+            {/* Message */}
             <div className='flex flex-col gap-2'>
                 <label
                     htmlFor="message"
-                    className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>
+                    className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
                     Message
                     <span className='text-Color-Green-Medium'>*</span>
                 </label>
                 <textarea
                     id="message"
-                    rows="3"
-                    {...register('message', { required: 'This field is required' })}
-                    className={`border-2 rounded-md py-2 px-4 ${errors.message ? 'border-red-600' : ''}`}
+                    rows="4"
+                    {...register('userMessage', { required: 'This field is required' })}
+                    className={`border-2 rounded-md py-2 px-4 ${errors.userMessage ? 'border-red-600' : ''}`}
                 ></textarea>
-                {errors.message && <p className='text-xs text-Color-Red'>{errors.message.message}</p>}
+                {errors.userMessage && <p className='text-xs text-Color-Red'>{errors.userMessage.message}</p>}
             </div>
 
             {/* Consent */}
@@ -131,12 +131,12 @@ export const ContactForm = () => {
                         className=""
                     />
                     <label
-                        className='inline-flex gap-2 text-xs font-medium text-Color-Grey-Dark'>
+                        className='inline-flex gap-2 text-sm font-medium text-Color-Grey-Dark'>
                         I consent to being contacted by the team
                         <span className='text-Color-Green-Medium'>*</span>
                     </label>
                 </div>
-                {errors.message && <p className='text-xs text-Color-Red'>{errors.consent.message}</p>}
+                {errors.consent && <p className='text-xs text-Color-Red'>{errors.consent.message}</p>}
             </div>
 
             <button
